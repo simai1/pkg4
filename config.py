@@ -4,3 +4,4 @@ INITIAL_SCALE = 1
 MAX_SCALE = 5
 MIN_SCALE = 0.11
 DELAY_MS = 1  # Задержка в миллисекундах между шагами
+SHOW_INVISIBLE=False
