@@ -4,7 +4,6 @@ import sys
 import math
 
 from pygame.gfxdraw import polygon
-# from pyparsing import empty  # (Похоже, было случайно в вашем коде, здесь не нужно)
 
 from config import *
 from algorithms import *

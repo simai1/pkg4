@@ -67,7 +67,7 @@ class Container:
         Затем выполняем растеризацию.
         """
         # Копируем список слоёв (он отсортирован по z-индексу).
-        self.layers.reverse()
+        # self.layers.reverse()
 
         for i in range(len(self.layers)):
             current_layer = self.layers[i]
