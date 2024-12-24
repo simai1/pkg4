@@ -3,7 +3,7 @@
 from typing import List, Tuple
 
 from config import *
-from sutherland_cohen_clip import sutherland_cohen_clip_line
+from sutherland_cohen_clip import fast_clip_line
 from sutherland_hodgman import sutherland_hodgman
 
 Point = Tuple[int, int]
@@ -37,11 +37,11 @@ class Layer:
             x1, y1 = self.polygon[i]
             x2, y2 = self.polygon[(i + 1) % len(self.polygon)]  # соединяем вершины кольцево
 
-            clipped_line = sutherland_cohen_clip_line(x1, y1, x2, y2, XMIN, YMIN, XMAX, YMAX)
-            if clipped_line:
-                # Рисуем отрезок по Брезенхему
-                bresenham_line(pixel_map, clipped_line[0], clipped_line[1], clipped_line[2], clipped_line[3], self.outline_color)
+            clipped_segments = fast_clip_line(x1, y1, x2, y2, XMIN, YMIN, XMAX, YMAX)
 
+            # Рисуем все подотрезки
+            for (cx1, cy1, cx2, cy2) in clipped_segments:
+                bresenham_line(pixel_map, cx1, cy1, cx2, cy2, self.outline_color)
 
 
 class Container:
