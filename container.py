@@ -52,6 +52,9 @@ class Container:
         self.layers: List[Layer] = []
         self.pixel_map = pixel_map
 
+    def set_pixel_map(self, pixel_map):
+        self.pixel_map = pixel_map
+
     def add_layer(self, layer: Layer):
         self.layers.append(layer)
         # Сортируем слои по Z (по высоте).
@@ -64,7 +67,7 @@ class Container:
         Затем выполняем растеризацию.
         """
         # Копируем список слоёв (он отсортирован по z-индексу).
-        # self.layers.reverse()
+        self.layers.reverse()
 
         for i in range(len(self.layers)):
             current_layer = self.layers[i]
