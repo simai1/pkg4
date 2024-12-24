@@ -8,12 +8,6 @@ from config import *
 from algorithms import *
 from container import Layer, Container
 
-RED = (245, 6, 0)
-ORANGE = (252, 205, 2)
-YELLOW = (251, 248, 5)
-LIME = (162, 226, 4)
-GREEN = (13, 149, 59)
-DARK_ORANGE = (255, 102, 0)
 BROWN = (197, 95, 4)
 BLUE = (2, 147, 221)
 LIGHT = (199, 231, 234)
@@ -149,23 +143,13 @@ def main():
         if (f):
             container = Container(pixel_map)
 
-            # голова
-            container.add_layer(Layer(polygon=[(467, 15), (346, 261), (588, 261)], color=ORANGE, z_index=1, outline_color=(0,0,0)))
-            container.add_layer(Layer(polygon=[(364, 23), (390, 170), (439, 73)], color=RED, z_index=2, outline_color=(0,0,0)))
-            container.add_layer(Layer(polygon=[(496, 73), (542, 170), (570, 23)], color=RED, z_index=3, outline_color=(0,0,0)))
-            container.add_layer(Layer(polygon=[(432, 126), (407, 178), (458, 178)], color=LIME, z_index=4, outline_color=(0,0,0)))
-            container.add_layer(Layer(polygon=[(476, 178), (530, 178), (504, 126)], color=LIME, z_index=5, outline_color=(0,0,0)))
-            container.add_layer(Layer(polygon=[(476, 178), (504, 178), (504, 126)], color=GREEN, z_index=6, outline_color=(0,0,0)))
-            container.add_layer(Layer(polygon=[(432, 126), (432, 178), (458, 178)], color=GREEN, z_index=7, outline_color=(0,0,0)))
-            container.add_layer(Layer(polygon=[(467, 215), (447, 261), (490, 261)], color=YELLOW, z_index=8, outline_color=(0,0,0)))
-            # тело
-            container.add_layer(Layer(polygon=[(467, 215), (300, 616), (640, 616)], color=DARK_ORANGE, z_index=1, outline_color=(0,0,0)))
-            container.add_layer(Layer(polygon=[(396, 526), (351, 616), (436, 616)], color=BROWN, z_index=2, outline_color=(0,0,0)))
-            container.add_layer(Layer(polygon=[(539, 526), (498, 616), (580, 616)], color=BROWN, z_index=2, outline_color=(0,0,0)))
-            #хвост
-            container.add_layer(Layer(polygon=[(329, 546), (300, 616), (42, 546)], color=BLUE, z_index=2, outline_color=(0, 0, 0)))
-            container.add_layer(Layer(polygon=[(111, 565), (224, 447), (42, 546)], color=BLUE, z_index=3, outline_color=(0, 0, 0)))
-            container.add_layer(Layer(polygon=[(188, 486), (224, 447), (134, 390)], color=BLUE, z_index=4, outline_color=(0, 0, 0)))
+            container.add_layer(Layer(polygon=[(340, 60), (136, 265), (542, 265)], color=BLUE, z_index=2, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(242, 151), (242, 4), (286, 4)], color=BROWN, z_index=3, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(286, 151), (242, 151), (286, 4)], color=BROWN, z_index=3, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(217, 263), (457, 263), (217, 587)], color=BROWN, z_index=1, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(457, 587), (457, 263), (217, 587)], color=BROWN, z_index=1, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(340, 333), (280, 400), (400, 400)], color=LIGHT, z_index=2, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(340, 470), (280, 400), (400, 400)], color=LIGHT, z_index=2, outline_color=(0,0,0)))
 
 
             # Выполняем «рисование» (определение видимой области + растеризация)
