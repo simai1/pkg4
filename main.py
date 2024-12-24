@@ -1,9 +1,12 @@
 import pygame
 import sys
 import math
+
+from pygame.gfxdraw import polygon
+
 from config import *
 from algorithms import *
-from figure import Layer, Container
+from container import Layer, Container
 
 GREY = (215, 219, 230)
 YELLOW = (254, 246, 201)
@@ -142,46 +145,49 @@ def main():
         draw_canvas(screen, scale, pixel_map, offset_x, offset_y)
         if (f):
             container = Container(pixel_map)
-            container.add_layer(Layer((128, 412), (565, 412), (565, 522), DARK_GREY, 1, visible=True, center=0))
-            container.add_layer(Layer((128, 412), (128, 522), (565, 522), DARK_GREY, 1, visible=True, center=(150, 240)))
-            # Земля
-            # Layer(pixel_map, (128, 412), (565, 412), (565, 522), DARK_GREY).draw()
-            # Layer(pixel_map, (128, 412), (128, 522), (565, 522), DARK_GREY).draw()
-            # # Ноги
-            # Layer(pixel_map, (237, 465), (293, 401), (308, 465), FLESH).draw()
-            # Layer(pixel_map, (307, 413), (354, 391), (322, 447), FLESH).draw()
-            # Layer(pixel_map, (312, 464), (354, 391), (365, 464), FLESH).draw()
-            #
-            #
-            #
-            # # Крыло и хвост
-            # Layer(pixel_map, (393, 344), (484, 436), (324, 418), GREY).draw()
-            # Layer(pixel_map, (276, 220), (384, 237), (364, 364), GREY).draw()
-            #
-            # # Лицо
-            # Layer(pixel_map, (157, 182), (173, 182), (164, 171), BLACK).draw()
-            # Layer(pixel_map, (231, 171), (238, 158), (248, 171), BLACK).draw()
-            # Layer(pixel_map, (178, 168), (217, 168), (203, 253), BROWN).draw()
-            # Layer(pixel_map, (235, 146), (219, 166), (259, 166), YELLOW, center=(236, 154)).draw()
-            # Layer(pixel_map, (242, 186), (219, 166), (259, 166), YELLOW).draw()
-            # Layer(pixel_map, (163, 161), (152, 178), (178, 178), YELLOW, center=(162, 167)).draw()
-            # Layer(pixel_map, (167, 197), (152, 178), (178, 178), YELLOW).draw()
-            #
-            #
-            # # Тело
-            #
-            # Layer(pixel_map, (140, 126), (186, 231), (140, 231), GREY).draw()
-            # Layer(pixel_map, (140, 126), (233, 126), (233, 338), GREY, center=(220, 228)).draw()
-            # Layer(pixel_map, (308, 126), (233, 126), (233, 271), GREY).draw()
-            # Layer(pixel_map, (308, 126), (233, 271), (308, 271), GREY, center=(299, 196)).draw()
-            # Layer(pixel_map, (308, 143), (384, 271), (308, 271), GREY).draw()
-            # Layer(pixel_map, (377, 271), (233, 380), (233, 271), GREY).draw()
-            # Layer(pixel_map, (377, 271), (233, 380), (377, 380), GREY).draw()
-            # Layer(pixel_map, (265, 433), (237, 380), (377, 380), GREY).draw()
-            # Layer(pixel_map, (377, 271), (410, 380), (377, 380), GREY).draw()
+
+            # земля
+            container.add_layer(Layer(polygon=[(128, 412), (565, 412), (565, 522)], color=DARK_GREY, z_index=1, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(128, 412), (128, 522), (565, 522)], color=DARK_GREY, z_index=2, outline_color=(0,0,0)))
+
+            # ноги
+            container.add_layer(Layer(polygon=[(237, 465), (293, 401), (308, 465)], color=FLESH, z_index=17, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(307, 413), (354, 391), (322, 447)], color=FLESH, z_index=18, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(312, 464), (354, 391), (365, 464)], color=FLESH, z_index=19, outline_color=(0,0,0)))
+
+            # тело
+            container.add_layer(Layer(polygon=[(140, 126), (186, 231), (140, 231)], color=GREY, z_index=6, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(140, 126), (233, 126), (233, 338)], color=GREY, z_index=7, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(308, 126), (233, 126), (233, 271)], color=GREY, z_index=8, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(308, 126), (233, 271), (308, 271)], color=GREY, z_index=9, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(308, 143), (384, 271), (308, 271)], color=GREY, z_index=10, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(377, 271), (233, 380), (233, 271)], color=GREY, z_index=11, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(377, 271), (233, 380), (377, 380)], color=GREY, z_index=12, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(265, 433), (237, 380), (377, 380)], color=GREY, z_index=13, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(377, 271), (410, 380), (377, 380)], color=GREY, z_index=14, outline_color=(0,0,0)))
+
+            # Крыло и хвост
+            container.add_layer(Layer(polygon=[(393, 344), (484, 436), (324, 418)], color=GREY, z_index=15, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(276, 220), (384, 237), (364, 364)], color=GREY, z_index=16, outline_color=(0,0,0)))
+
+            # Лицо
+            container.add_layer(Layer(polygon=[(157, 182), (173, 182), (164, 171)], color=BLACK, z_index=26, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(231, 171), (238, 158), (248, 171)], color=BLACK, z_index=25, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(178, 168), (217, 168), (203, 253)], color=BROWN, z_index=24, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(235, 146), (219, 166), (259, 166)], color=YELLOW, z_index=20, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(242, 186), (219, 166), (259, 166)], color=YELLOW, z_index=21, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(163, 161), (152, 178), (178, 178)], color=YELLOW, z_index=22, outline_color=(0,0,0)))
+            container.add_layer(Layer(polygon=[(167, 197), (152, 178), (178, 178)], color=YELLOW, z_index=23, outline_color=(0,0,0)))
+
+            # container.add_layer(Layer(polygon=[(100,150), (200,250), (300,200)], color=YELLOW, z_index=1, outline_color=(0,0,0)))
+            # container.add_layer(Layer(polygon=[(150,150), (150,200), (200,200),
+            #                 (200,150)], color=BROWN, z_index=2, outline_color=(0,0,0)))
+
+
+            # Выполняем «рисование» (определение видимой области + растеризация)
+            container.draw()
 
             # Layer(pixel_map, (361, 233), (384, 237), (380, 265), GREY).draw()
-            container.analyze_and_fill()
             f = False
 
         pygame.display.flip()
