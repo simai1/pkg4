@@ -29,10 +29,9 @@ class Layer:
         if not self.polygon:
             return
 
-        # 1) Заливка (примерно как раньше)
+
         fill_polygon_scanline(pixel_map, self.polygon, self.color)
 
-        # 2) Обводка сторон многоугольника
         for i in range(len(self.polygon)):
             x1, y1 = self.polygon[i]
             x2, y2 = self.polygon[(i + 1) % len(self.polygon)]  # соединяем вершины кольцево
@@ -88,10 +87,6 @@ class Container:
 
 
 def fill_polygon_scanline(pixel_map, polygon, color):
-    """
-    Упрощённая реализация заливки многоугольника методом scan-line,
-    с ограничением по кадру [XMIN..XMAX, YMIN..YMAX].
-    """
     if not polygon:
         return
 
