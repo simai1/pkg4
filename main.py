@@ -100,7 +100,6 @@ def main():
                         container.add_layer(new_layer)
                         triangle_points.clear()
 
-                        # ВАЖНО: очищаем pixel_map, заново рисуем все слои
                         pixel_map = [row[:] for row in empty_map]  # новая копия пустого
                         container.set_pixel_map(pixel_map)
                         container.draw()
