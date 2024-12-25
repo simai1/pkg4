@@ -67,21 +67,21 @@ class Container:
 
         for i in range(len(self.layers)):
             current_layer = self.layers[i]
-            subject_polygon = current_layer.get_polygon()
-
-            # Для каждого слоя выше текущего:
-            # for j in range(i+1, len(self.layers)):
-            #     clip_polygon = self.layers[j].get_polygon()
-            #     # Применяем Вейлера–Азертона (операция "исключение" видимых поверхностей из нижележащего)
-            #     # Т.е. вычитаем часть, которую перекрывает вышележащий слой
-            #     subject_polygon = sutherland_hodgman(subject_polygon, clip_polygon)
+            # subject_polygon = current_layer.get_polygon()
             #
-            #     # Если многоугольник "исчез" — слой полностью перекрыт
-            #     if not subject_polygon:
-            #         break
-
-            # Устанавливаем результирующий многоугольник (видимую часть слоя)
-            current_layer.set_polygon(subject_polygon)
+            # # Для каждого слоя выше текущего:
+            # # for j in range(i+1, len(self.layers)):
+            # #     clip_polygon = self.layers[j].get_polygon()
+            # #     # Применяем Вейлера–Азертона (операция "исключение" видимых поверхностей из нижележащего)
+            # #     # Т.е. вычитаем часть, которую перекрывает вышележащий слой
+            # #     subject_polygon = sutherland_hodgman(subject_polygon, clip_polygon)
+            # #
+            # #     # Если многоугольник "исчез" — слой полностью перекрыт
+            # #     if not subject_polygon:
+            # #         break
+            #
+            # # Устанавливаем результирующий многоугольник (видимую часть слоя)
+            # current_layer.set_polygon(subject_polygon)
             # Выполняем растеризацию полученного многоугольника
             current_layer.draw(self.pixel_map)
 
