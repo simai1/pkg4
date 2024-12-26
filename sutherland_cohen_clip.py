@@ -22,7 +22,7 @@ def compute_outcode(x, y, x_min, y_min, x_max, y_max):
 def fast_clip_line(x1, y1, x2, y2, x_min, y_min, x_max, y_max, epsilon=0.5):
     """
     Алгоритм Fast Clipping (деление пополам) для отрезка (x1,y1)-(x2,y2):
-    - Возвращает список отрезков, которые находятся ВНУТРИ окна.
+    - Возвращает отрезок, который находится ВНУТРИ окна.
     - Параметр epsilon: минимальная длина, при которой прекращаем делить.
     """
     out1 = compute_outcode(x1, y1, x_min, y_min, x_max, y_max)
